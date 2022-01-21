@@ -12,3 +12,62 @@ for n in numbers:
     result += 1
 
 print(result)
+
+
+Question ---2
+
+# Write a program to take an integer N and print the sum of all its even digits and sum of all its odd digits separately.
+
+num = [int(a) for a in str(input())]
+even_sum = 0
+odd_sum = 0
+
+for i in num:
+    if i % 2 == 0:
+        even_sum = even_sum + i
+    else:
+        odd_sum = odd_sum + i
+
+print(even_sum, odd_sum)
+
+
+Question----3
+
+
+
+# Write a Python program to create a word guessing game kind of like Hangman. Program should do the following operations:
+
+# a) Program chooses random word from list of words.
+
+# b) Limited guesses before game ends.
+
+# c) Addresses repeats when guessing.
+
+# d) Displays progress after each guess
+
+import random
+
+words = ['american', 'restaurant', 'programming', 'computer']
+random_word = random.choice(words)
+count = 0
+attempt_list = []
+
+while True:
+    guess = str(input('Guess a letter: ')).lower()
+
+    if guess not in attempt_list:
+        if guess in random_word:
+            print('Its in the word')
+        else:
+            count += 1
+            print('Not in word, attemps: {}'.format(count))
+
+            if count >= 5:
+                print('\nYou have reached max attempts')
+                print('Sorry, but hangman died! You lose')
+                break
+    else:
+        print('You already guessed {}. Try again'.format(guess))
+        print(set(attempt_list))
+
+    attempt_list.append(guess)
